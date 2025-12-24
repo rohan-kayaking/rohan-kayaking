@@ -18,35 +18,60 @@
 
     /* Hero Header */
     header {
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hero.jpg') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(0, 200, 255, 0.6), rgba(255, 140, 0, 0.6)), url('hero.jpg') center/cover no-repeat;
       color: #fff;
       padding: 100px 20px;
       text-align: center;
-      transition: background-size 20s ease-in-out;
-      background-size: cover;
-      background-position: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    header:hover {
-      background-size: 105% 105%;
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+      z-index: 1;
     }
 
-    header h1,
+    header h1 {
+      position: relative;
+      font-size: 48px;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
     header p {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s forwards;
+      position: relative;
+      font-size: 20px;
+      margin-top: 15px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      z-index: 2;
     }
 
-    header p {
-      animation-delay: 0.5s;
+    .hero-btn {
+      position: relative;
+      z-index: 2;
+      background: #ff6f00;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .hero-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
     }
 
     section {
@@ -76,12 +101,12 @@
       height: 200px;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     .cards img:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
     /* Price Table */
@@ -95,7 +120,7 @@
       border-collapse: collapse;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .price-table th,
@@ -123,7 +148,7 @@
     }
 
     /* Operating Hours Box */
-    section p {
+    .hours {
       background-color: #ecfeff;
       padding: 10px 15px;
       border-left: 5px solid #14b8a6;
@@ -163,7 +188,7 @@
 
     .cta a:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     footer {
@@ -187,7 +212,7 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
     /* Google Maps */
@@ -215,7 +240,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0, 0, 0, 0.9);
       justify-content: center;
       align-items: center;
       z-index: 10000;
@@ -227,13 +252,13 @@
       max-width: 90%;
       max-height: 90%;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s;
     }
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 24px;
+        font-size: 28px;
       }
 
       header p {
@@ -261,6 +286,8 @@
   <header>
     <h1>Rohan Kayaking</h1>
     <p>Cola Beach Lagoon Kayaking – South Goa</p>
+    <a href="https://api.whatsapp.com/send?phone=918329375100&text=Hi%20I%20want%20to%20book%20kayaking%20at%20Cola%20Beach" target="_blank" class="hero-btn">💬 Book Now</a>
+    <img src="hero.jpg" alt="Cola Beach Lagoon Kayaking" style="display:none;" loading="lazy">
   </header>
 
   <!-- About Section -->
@@ -273,10 +300,10 @@
   <section>
     <h2>Photo Gallery</h2>
     <div class="cards">
-      <div><img src="lagoon.jpg" alt="Cola Beach Lagoon Kayaking view"></div>
-      <div><img src="kayak1.jpg" alt="Single Kayak ride at Cola Beach"></div>
-      <div><img src="kayak2.jpg" alt="Double Kayak ride at Cola Beach Lagoon"></div>
-      <div><img src="sunset.jpg" alt="Sunset Kayaking at Cola Beach Lagoon"></div>
+      <div><img src="lagoon.jpg" alt="Cola Beach Lagoon Kayaking view" loading="lazy"></div>
+      <div><img src="kayak1.jpg" alt="Single Kayak ride at Cola Beach" loading="lazy"></div>
+      <div><img src="kayak2.jpg" alt="Double Kayak ride at Cola Beach Lagoon" loading="lazy"></div>
+      <div><img src="sunset.jpg" alt="Sunset Kayaking at Cola Beach Lagoon" loading="lazy"></div>
     </div>
   </section>
 
@@ -314,7 +341,7 @@
     </div>
 
     <h2>Operating Hours</h2>
-    <p><strong>Daily:</strong> 8:00 AM – 6:30 PM</p>
+    <p class="hours"><strong>Daily:</strong> 8:00 AM – 6:30 PM</p>
   </section>
 
   <!-- CTA -->
@@ -380,14 +407,6 @@
     });
 
     lightbox.addEventListener('click', closeLightbox);
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
   </script>
 
 </body>
