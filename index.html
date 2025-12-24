@@ -17,9 +17,21 @@
       color: #fff;
       padding: 60px 20px;
       text-align: center;
+      transition: background-size 20s ease-in-out;
+      background-size: 100% 100%;
     }
-    header h1 { margin-bottom: 10px; font-size: 32px; }
-    header p { font-size: 18px; }
+    header:hover { background-size: 105% 105%; }
+
+    header h1, header p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+    header p { animation-delay: 0.5s; }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     section { padding: 40px 20px; max-width: 1000px; margin: auto; }
     h2 { color: #0f766e; margin-bottom: 15px; }
@@ -37,15 +49,31 @@
       object-fit: cover;
       height: 200px;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .cards img:hover { transform: scale(1.05); }
+    .cards img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
 
     /* Price Table */
-    .price-table-wrapper { overflow-x: auto; }
-    .price-table { width: 100%; border-collapse: collapse; }
-    .price-table th, .price-table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
-    .price-table th { background: #14b8a6; color: #fff; }
+    .price-table-wrapper { overflow-x: auto; margin-bottom: 20px; }
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .price-table th, .price-table td { padding: 12px 15px; text-align: center; }
+    .price-table th { background-color: #14b8a6; color: #fff; font-size: 16px; }
+    .price-table tr:nth-child(even) { background-color: #f0fdfa; }
+    .price-table tr:nth-child(odd) { background-color: #e0f7f5; }
+    .price-table tr:hover { background-color: #c5f0ed; }
+
+    /* Operating Hours Box */
+    section p { background-color: #ecfeff; padding: 10px 15px; border-left: 5px solid #14b8a6; border-radius: 5px; display: inline-block; }
 
     /* CTA */
     .cta { background: #0f766e; color: white; text-align: center; padding: 40px 20px; }
@@ -99,25 +127,22 @@
     </div>
   </section>
 
-  <!-- Price Table -->
-<section>
-  <h2>Pricing</h2>
-  <div class="price-table-wrapper">
-    <table class="price-table">
-      <tr><th>Kayak Type</th><th>Duration</th><th>Price</th></tr>
-      <tr><td>Single Kayak</td><td>1 hour</td><td>₹600</td></tr>
-      <tr><td>Single Kayak</td><td>30 minutes</td><td>₹300</td></tr>
-      <tr><td>Double Kayak</td><td>1 hour</td><td>₹800 (₹400 per person)</td></tr>
-      <tr><td>Double Kayak</td><td>30 minutes</td><td>₹600 (₹300 per person)</td></tr>
-    </table>
-  </div>
-</section>
+  <!-- Pricing & Hours -->
+  <section>
+    <h2>Pricing</h2>
+    <div class="price-table-wrapper">
+      <table class="price-table">
+        <tr><th>Kayak Type</th><th>Duration</th><th>Price</th></tr>
+        <tr><td>Single Kayak</td><td>1 hour</td><td>₹600</td></tr>
+        <tr><td>Single Kayak</td><td>30 minutes</td><td>₹300</td></tr>
+        <tr><td>Double Kayak</td><td>1 hour</td><td>₹800 (₹400 per person)</td></tr>
+        <tr><td>Double Kayak</td><td>30 minutes</td><td>₹600 (₹300 per person)</td></tr>
+      </table>
+    </div>
 
-<!-- Operating Hours -->
-<section>
-  <h2>Operating Hours</h2>
-  <p><strong>Daily:</strong> 8:00 AM – 6:30 PM</p>
-</section>
+    <h2>Operating Hours</h2>
+    <p><strong>Daily:</strong> 8:00 AM – 6:30 PM</p>
+  </section>
 
   <!-- CTA -->
   <section class="cta">
@@ -153,6 +178,7 @@
     <img id="lightbox-img" src="" alt="Gallery Image">
   </div>
 
+  <!-- JS Scripts -->
   <script>
     // Lightbox JS
     const lightbox = document.getElementById('lightbox');
@@ -166,9 +192,15 @@
       });
     });
 
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
+    function closeLightbox() { lightbox.style.display = 'none'; }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
   </script>
 
 </body>
