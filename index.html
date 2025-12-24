@@ -10,24 +10,68 @@
   <link rel="icon" href="favicon.ico">
   <style>
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #333; }
-    header { background: linear-gradient(to right, #0f766e, #14b8a6); color: #fff; padding: 40px 20px; text-align: center; }
+
+    /* Header with hero image */
+    header {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('sunset.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
     header h1 { margin-bottom: 10px; font-size: 32px; }
     header p { font-size: 18px; }
+
     section { padding: 40px 20px; max-width: 1000px; margin: auto; }
     h2 { color: #0f766e; margin-bottom: 15px; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .card { border: 1px solid #ddd; border-radius: 10px; padding: 20px; background: #fafafa; }
-    .highlight { background: #ecfeff; border-left: 5px solid #14b8a6; padding: 20px; border-radius: 8px; }
+
+    /* Gallery */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    .cards img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      object-fit: cover;
+      height: 200px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .cards img:hover { transform: scale(1.05); }
+
+    /* Price Table */
+    .price-table-wrapper { overflow-x: auto; }
     .price-table { width: 100%; border-collapse: collapse; }
     .price-table th, .price-table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
     .price-table th { background: #14b8a6; color: #fff; }
+
+    /* CTA */
     .cta { background: #0f766e; color: white; text-align: center; padding: 40px 20px; }
     .cta a { display: inline-block; margin: 10px; padding: 12px 25px; background: #14b8a6; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; }
+
     footer { text-align: center; padding: 20px; background: #f1f5f9; font-size: 14px; }
 
     /* Floating WhatsApp Button */
     .whatsapp-button { position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 60px; height: 60px; }
     .whatsapp-button img { width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+
+    /* Google Maps */
+    .map-container { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
+    .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+    /* Lightbox */
+    #lightbox { position: fixed; display: none; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 10000; cursor: pointer; }
+    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      header h1 { font-size: 24px; }
+      header p { font-size: 16px; }
+      section { padding: 20px 15px; }
+      .cards img { height: 150px; }
+    }
   </style>
 </head>
 
@@ -44,28 +88,30 @@
     <p>Enjoy single or double kayak rides in the beautiful Cola Beach lagoon. Perfect for beginners and sunset lovers. Our staff will guide you safely and ensure a majestic experience.</p>
   </section>
 
-  <!-- Gallery Placeholder -->
+  <!-- Gallery -->
   <section>
     <h2>Photo Gallery</h2>
     <div class="cards">
-      <div class="card"><img src="lagoon.jpg" alt="Cola Beach Lagoon Kayaking view"></div>
-      <div class="card"><img src="kayak1.jpg" alt="Single Kayak ride at Cola Beach"></div>
-      <div class="card"><img src="kayak2.jpg" alt="Double Kayak ride at Cola Beach Lagoon"></div>
-      <div class="card"><img src="sunset.jpg" alt="Sunset Kayaking at Cola Beach Lagoon"></div>
+      <div><img src="lagoon.jpg" alt="Cola Beach Lagoon Kayaking view"></div>
+      <div><img src="kayak1.jpg" alt="Single Kayak ride at Cola Beach"></div>
+      <div><img src="kayak2.jpg" alt="Double Kayak ride at Cola Beach Lagoon"></div>
+      <div><img src="sunset.jpg" alt="Sunset Kayaking at Cola Beach Lagoon"></div>
     </div>
   </section>
 
   <!-- Price Table -->
   <section>
     <h2>Pricing</h2>
-    <table class="price-table">
-      <tr><th>Kayak Type</th><th>1 Hour</th><th>30 Minutes Extra</th></tr>
-      <tr><td>Single</td><td>₹600</td><td>₹300</td></tr>
-      <tr><td>Double</td><td>₹800</td><td>₹600</td></tr>
-    </table>
+    <div class="price-table-wrapper">
+      <table class="price-table">
+        <tr><th>Kayak Type</th><th>1 Hour</th><th>1 Hour 30 Minutes</th></tr>
+        <tr><td>Single</td><td>₹600</td><td>₹900</td></tr>
+        <tr><td>Double</td><td>₹800</td><td>₹1400</td></tr>
+      </table>
+    </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- CTA -->
   <section class="cta">
     <h2>Book Your Kayaking Experience</h2>
     <p>Call or WhatsApp us to reserve your slot</p>
@@ -73,10 +119,15 @@
     <a href="https://wa.me/8329375100">💬 WhatsApp Booking</a>
   </section>
 
-  <!-- Google Maps Placeholder -->
+  <!-- Google Maps -->
   <section>
     <h2>Find Us at Cola Beach</h2>
-    <iframe src="YOUR_GOOGLE_MAPS_IFRAME_LINK" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.870786468135!2d74.01902791530155!3d14.998583589699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbe4f0c8896808d%3A0x7ffe55ffd6a4c88b!2sRohan%20Kayaking%2C%20Cola%20beach%20Blue%20lagoon%20cola%2C%20Canacona%2C%20Goa%20403702!5e0!3m2!1sen!2sin!4v1708699794915!5m2!1sen!2sin" 
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -88,141 +139,29 @@
   <a href="https://wa.me/8329375100" target="_blank" class="whatsapp-button">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
-</body>
 
-</html>
-<header>
-  <h1>Rohan Kayaking</h1>
-  <p>Lagoon Kayaking Experience at <strong>Cola Beach, South Goa</strong></p>
-</header>
-
-<section>
-  <h2>About Us</h2>
-  <p>
-    Rohan Kayaking offers a peaceful and beginner-friendly lagoon kayaking experience
-    at the beautiful and hidden <strong>Cola Beach, South Goa</strong>.
-    Enjoy nature, calm waters, and a majestic sunset while kayaking safely.
-  </p>
-</section>
-
-<section>
-  <h2>Kayaking Options</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Single Kayak</h3>
-      <p>Perfect for solo riders who want a calm and peaceful ride in the lagoon.</p>
-    </div>
-    <div class="card">
-      <h3>Double Kayak</h3>
-      <p>Ideal for couples, friends, and families to enjoy kayaking together.</p>
-    </div>
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Gallery Image">
   </div>
-</section>
 
-<section>
-  <h2>Duration</h2>
-  <div class="highlight">
-    <p><strong>Total duration:</strong> 1 hour 30 minutes</p>
-    <p>Extra 5–10 minutes may be allowed depending on conditions.</p>
-  </div>
-</section>
+  <script>
+    // Lightbox JS
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
 
-<section>
-  <h2>Pricing</h2>
-  <table class="price-table">
-    <tr>
-      <th>Kayak Type</th>
-      <th>Duration</th>
-      <th>Price</th>
-    </tr>
-    <tr>
-      <td>Double Kayak</td>
-      <td>1 Hour</td>
-      <td>₹800 (₹400 per person)</td>
-    </tr>
-    <tr>
-      <td>Double Kayak</td>
-      <td>1 Hour 30 Minutes</td>
-      <td>₹600 (₹300 per person)</td>
-    </tr>
-    <tr>
-      <td>Single Kayak</td>
-      <td>1 Hour</td>
-      <td>₹600</td>
-    </tr>
-    <tr>
-      <td>Single Kayak</td>
-      <td>30 Minutes</td>
-      <td>₹300</td>
-    </tr>
-  </table>
-</section>
+    document.querySelectorAll('.cards img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
 
-<section>
-  <h2>Safety & Guidance</h2>
-  <ul>
-    <li>Full briefing before every ride (pedaling & direction)</li>
-    <li>Life jackets provided when water level is high</li>
-    <li>One trained staff member on lookout at all times</li>
-    <li>Beginner-friendly experience</li>
-    <li>Age limit: 9 years and above</li>
-  </ul>
-</section>
-<section>
-  <h2>Photo Gallery – Cola Beach Lagoon Kayaking</h2>
-  <p>Real views from our lagoon kayaking experience at Cola Beach, South Goa.</p>
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+  </script>
 
-  <div class="cards">
-    <div class="card">
-      <img src="lagoon.jpg" alt="Cola Beach Lagoon Kayaking" style="width:100%; border-radius:10px;">
-    </div>
-    <div class="card">
-      <img src="kayak1.jpg" alt="Single Kayak at Cola Beach" style="width:100%; border-radius:10px;">
-    </div>
-    <div class="card">
-      <img src="kayak2.jpg" alt="Double Kayak at Cola Beach Lagoon" style="width:100%; border-radius:10px;">
-    </div>
-    <div class="card">
-      <img src="sunset.jpg" alt="Sunset Kayaking at Cola Beach" style="width:100%; border-radius:10px;">
-    </div>
-  </div>
-</section>
-<section>
-  <h2>Best Time to Kayak</h2>
-  <div class="highlight">
-    <p>
-      🌅 <strong>Sunset kayaking</strong> is the most recommended —
-      the lagoon turns magical and truly majestic.
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>Operating Hours</h2>
-  <p><strong>Daily:</strong> 8:00 AM – 6:30 PM</p>
-</section>
-
-<section class="cta">
-  <h2>Book Your Kayaking Experience</h2>
-  <p>Call or WhatsApp us to reserve your slot</p>
-  <a href="tel:+918329375100">📞 Call Now</a>
-  <a href="https://wa.me/8329375100">💬 WhatsApp Booking</a>
-</section>
-
-<footer>
-  <p>© 2025 Rohan Kayaking | Cola Beach, South Goa</p>
-</footer>
-<!-- Floating WhatsApp Button with Logo -->
-<a href="https://wa.me/8329375100" target="_blank"
-   style="position: fixed;
-          bottom: 20px;
-          right: 20px;
-          width: 60px;
-          height: 60px;
-          z-index: 1000;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-       alt="WhatsApp" 
-       style="width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-</a>
 </body>
 </html>
