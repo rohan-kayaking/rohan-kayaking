@@ -9,7 +9,12 @@
   <meta name="keywords" content="Cola Beach kayaking, South Goa kayak rental, lagoon kayaking, sunset kayaking, Rohan Kayaking">
   <link rel="icon" href="favicon.ico">
   <style>
-    body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #333; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
 
     /* Hero Header */
     header {
@@ -22,22 +27,38 @@
       background-position: center;
     }
 
-    header:hover { background-size: 105% 105%; }
+    header:hover {
+      background-size: 105% 105%;
+    }
 
-    header h1, header p {
+    header h1,
+    header p {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 1s forwards;
     }
 
-    header p { animation-delay: 0.5s; }
-
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
+    header p {
+      animation-delay: 0.5s;
     }
 
-    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
-    h2 { color: #0f766e; margin-bottom: 15px; }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #0f766e;
+      margin-bottom: 15px;
+    }
 
     /* Gallery */
     .cards {
@@ -46,6 +67,7 @@
       gap: 15px;
       touch-action: pan-y;
     }
+
     .cards img {
       width: 100%;
       border-radius: 10px;
@@ -56,13 +78,18 @@
       transition: transform 0.3s, box-shadow 0.3s;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
+
     .cards img:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
 
     /* Price Table */
-    .price-table-wrapper { overflow-x: auto; margin-bottom: 20px; }
+    .price-table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+
     .price-table {
       width: 100%;
       border-collapse: collapse;
@@ -70,54 +97,124 @@
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .price-table th, .price-table td { padding: 12px 15px; text-align: center; }
-    .price-table th { background-color: #14b8a6; color: #fff; font-size: 16px; }
-    .price-table tr:nth-child(even) { background-color: #f0fdfa; }
-    .price-table tr:nth-child(odd) { background-color: #e0f7f5; }
-    .price-table tr:hover { background-color: #c5f0ed; }
+
+    .price-table th,
+    .price-table td {
+      padding: 12px 15px;
+      text-align: center;
+    }
+
+    .price-table th {
+      background-color: #14b8a6;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .price-table tr:nth-child(even) {
+      background-color: #f0fdfa;
+    }
+
+    .price-table tr:nth-child(odd) {
+      background-color: #e0f7f5;
+    }
+
+    .price-table tr:hover {
+      background-color: #c5f0ed;
+    }
 
     /* Operating Hours Box */
-    section p { background-color: #ecfeff; padding: 10px 15px; border-left: 5px solid #14b8a6; border-radius: 5px; display: inline-block; }
+    section p {
+      background-color: #ecfeff;
+      padding: 10px 15px;
+      border-left: 5px solid #14b8a6;
+      border-radius: 5px;
+      display: inline-block;
+    }
 
-    /* CTA */
+    /* CTA Section */
     .cta {
       background: #0f766e;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
-    .cta p { color: white; font-size: 18px; margin-bottom: 20px; }
+
+    .cta p {
+      color: white;
+      font-size: 18px;
+      margin-bottom: 25px;
+      background: none; /* removed white background */
+      padding: 0;
+      border: none;
+    }
+
     .cta a {
       display: inline-block;
       margin: 10px;
-      padding: 12px 25px;
+      padding: 15px 30px;
       background: #14b8a6;
       color: white;
       text-decoration: none;
-      border-radius: 25px;
+      border-radius: 30px;
       font-weight: bold;
+      font-size: 16px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
+
     .cta a:hover {
       transform: scale(1.05);
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    footer { text-align: center; padding: 20px; background: #f1f5f9; font-size: 14px; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f5f9;
+      font-size: 14px;
+    }
 
     /* Floating WhatsApp Button */
-    .whatsapp-button { position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 60px; height: 60px; }
-    .whatsapp-button img { width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 60px;
+      height: 60px;
+    }
+
+    .whatsapp-button img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
 
     /* Google Maps */
-    .map-container { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
-    .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .map-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+    }
 
-    /* Lightbox Overlay */
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Lightbox Overlay with Swipe */
     #lightbox {
       position: fixed;
       display: none;
-      top:0; left:0; width:100%; height:100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0,0,0,0.9);
       justify-content: center;
       align-items: center;
@@ -125,6 +222,7 @@
       cursor: pointer;
       touch-action: pan-y;
     }
+
     #lightbox img {
       max-width: 90%;
       max-height: 90%;
@@ -134,10 +232,26 @@
     }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 24px; }
-      header p { font-size: 16px; }
-      section { padding: 20px 15px; }
-      .cards img { height: 150px; }
+      header h1 {
+        font-size: 24px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 20px 15px;
+      }
+
+      .cards img {
+        height: 150px;
+      }
+
+      .cta a {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -171,11 +285,31 @@
     <h2>Pricing</h2>
     <div class="price-table-wrapper">
       <table class="price-table">
-        <tr><th>Kayak Type</th><th>Duration</th><th>Price</th></tr>
-        <tr><td>Single Kayak</td><td>1 hour</td><td>₹600</td></tr>
-        <tr><td>Single Kayak</td><td>30 minutes</td><td>₹300</td></tr>
-        <tr><td>Double Kayak</td><td>1 hour</td><td>₹800 (₹400 per person)</td></tr>
-        <tr><td>Double Kayak</td><td>30 minutes</td><td>₹600 (₹300 per person)</td></tr>
+        <tr>
+          <th>Kayak Type</th>
+          <th>Duration</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Single Kayak</td>
+          <td>1 hour</td>
+          <td>₹600</td>
+        </tr>
+        <tr>
+          <td>Single Kayak</td>
+          <td>30 minutes</td>
+          <td>₹300</td>
+        </tr>
+        <tr>
+          <td>Double Kayak</td>
+          <td>1 hour</td>
+          <td>₹800 (₹400 per person)</td>
+        </tr>
+        <tr>
+          <td>Double Kayak</td>
+          <td>30 minutes</td>
+          <td>₹600 (₹300 per person)</td>
+        </tr>
       </table>
     </div>
 
@@ -195,10 +329,8 @@
   <section>
     <h2>Find Us at Cola Beach</h2>
     <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.870786468135!2d74.01902791530155!3d14.998583589699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbe4f0c8896808d%3A0x7ffe55ffd6a4c88b!2sRohan%20Kayaking%2C%20Cola%20beach%20Blue%20lagoon%20cola%2C%20Canacona%2C%20Goa%20403702!5e0!3m2!1sen!2sin!4v1708699794915!5m2!1sen!2sin" 
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.870786468135!2d74.01902791530155!3d14.998583589699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbe4f0c8896808d%3A0x7ffe55ffd6a4c88b!2sRohan%20Kayaking%2C%20Cola%20beach%20Blue%20lagoon%20cola%2C%20Canacona%2C%20Goa%20403702!5e0!3m2!1sen!2sin!4v1708699794915!5m2!1sen!2sin"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 
@@ -217,8 +349,8 @@
     <img id="lightbox-img" src="" alt="Gallery Image">
   </div>
 
-  <!-- JS Scripts -->
   <script>
+    // Lightbox & swipe
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const galleryImages = document.querySelectorAll('.cards img');
@@ -237,25 +369,21 @@
       img.addEventListener('click', () => openLightbox(index));
     });
 
-    // Swipe support for mobile
     let startX = 0;
     lightbox.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
     lightbox.addEventListener('touchend', e => {
       let endX = e.changedTouches[0].clientX;
-      if(endX - startX > 50) { // swipe right
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      } else if(startX - endX > 50) { // swipe left
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-      }
+      if (endX - startX > 50) currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      else if (startX - endX > 50) currentIndex = (currentIndex + 1) % galleryImages.length;
       lightboxImg.src = galleryImages[currentIndex].src;
       lightboxImg.alt = galleryImages[currentIndex].alt;
     });
 
     lightbox.addEventListener('click', closeLightbox);
 
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
       });
