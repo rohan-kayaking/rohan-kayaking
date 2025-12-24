@@ -44,6 +44,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
+      touch-action: pan-y;
     }
     .cards img {
       width: 100%;
@@ -79,8 +80,28 @@
     section p { background-color: #ecfeff; padding: 10px 15px; border-left: 5px solid #14b8a6; border-radius: 5px; display: inline-block; }
 
     /* CTA */
-    .cta { background: #0f766e; color: white; text-align: center; padding: 40px 20px; }
-    .cta a { display: inline-block; margin: 10px; padding: 12px 25px; background: #14b8a6; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; }
+    .cta {
+      background: #0f766e;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .cta p { color: white; font-size: 18px; margin-bottom: 20px; }
+    .cta a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      background: #14b8a6;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
 
     footer { text-align: center; padding: 20px; background: #f1f5f9; font-size: 14px; }
 
@@ -92,11 +113,26 @@
     .map-container { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
     .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    /* Lightbox */
-    #lightbox { position: fixed; display: none; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 10000; cursor: pointer; }
-    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    /* Lightbox Overlay */
+    #lightbox {
+      position: fixed;
+      display: none;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      cursor: pointer;
+      touch-action: pan-y;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
 
-    /* Mobile adjustments */
     @media (max-width: 600px) {
       header h1 { font-size: 24px; }
       header p { font-size: 16px; }
@@ -152,7 +188,7 @@
     <h2>Book Your Kayaking Experience</h2>
     <p>Call or WhatsApp us to reserve your slot</p>
     <a href="tel:+918329375100">📞 Call Now</a>
-    <a href="https://wa.me/8329375100">💬 WhatsApp Booking</a>
+    <a href="https://api.whatsapp.com/send?phone=918329375100&text=Hi%20I%20want%20to%20book%20kayaking%20at%20Cola%20Beach" target="_blank" rel="noopener">💬 WhatsApp Booking</a>
   </section>
 
   <!-- Google Maps -->
@@ -172,30 +208,50 @@
   </footer>
 
   <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/8329375100" target="_blank" class="whatsapp-button">
+  <a href="https://api.whatsapp.com/send?phone=918329375100&text=Hi%20I%20want%20to%20book%20kayaking%20at%20Cola%20Beach" target="_blank" class="whatsapp-button">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
-  <!-- Lightbox Overlay -->
-  <div id="lightbox" onclick="closeLightbox()">
+  <!-- Lightbox Overlay with Swipe -->
+  <div id="lightbox">
     <img id="lightbox-img" src="" alt="Gallery Image">
   </div>
 
   <!-- JS Scripts -->
   <script>
-    // Lightbox JS
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const galleryImages = document.querySelectorAll('.cards img');
+    let currentIndex = 0;
 
-    document.querySelectorAll('.cards img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-      });
-    });
+    function openLightbox(index) {
+      currentIndex = index;
+      lightbox.style.display = 'flex';
+      lightboxImg.src = galleryImages[index].src;
+      lightboxImg.alt = galleryImages[index].alt;
+    }
 
     function closeLightbox() { lightbox.style.display = 'none'; }
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
+    });
+
+    // Swipe support for mobile
+    let startX = 0;
+    lightbox.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+    lightbox.addEventListener('touchend', e => {
+      let endX = e.changedTouches[0].clientX;
+      if(endX - startX > 50) { // swipe right
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      } else if(startX - endX > 50) { // swipe left
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+      }
+      lightboxImg.src = galleryImages[currentIndex].src;
+      lightboxImg.alt = galleryImages[currentIndex].alt;
+    });
+
+    lightbox.addEventListener('click', closeLightbox);
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
