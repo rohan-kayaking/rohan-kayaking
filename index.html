@@ -1,254 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohan Kayaking – Cola Beach Lagoon Kayaking South Goa</title>
+  <meta name="description" content="Experience single & double kayak rides at Cola Beach, South Goa. Sunset kayaking, beginner-friendly, safe lagoon kayaking with staff support. Book via WhatsApp or call.">
+  <meta name="keywords" content="Cola Beach kayaking, South Goa kayak rental, lagoon kayaking, sunset kayaking, Rohan Kayaking">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
 
-<title>Rohan Kayaking | Cola Beach Lagoon Kayaking Goa</title>
+    /* Hero Header */
+    header {
+      background: linear-gradient(135deg, rgba(0, 200, 255, 0.6), rgba(255, 140, 0, 0.6)), url('hero.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-<meta name="description" content="Single & Double Kayaking at Cola Beach Lagoon, South Goa. Best sunset kayaking experience. Call or WhatsApp to book.">
-<meta name="keywords" content="Rohan Kayaking, Cola Beach Kayaking, Kayaking in South Goa, Cola Lagoon Kayak">
-<meta name="author" content="Rohan Kayaking">
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+      z-index: 1;
+    }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f8fafc;
-  color: #033;
-}
+    header h1 {
+      position: relative;
+      font-size: 48px;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
 
-/* HEADER */
-header {
-  background: linear-gradient(135deg, #0f766e, #14b8a6);
-  color: white;
-  padding: 45px 20px;
-  text-align: center;
-}
+    header p {
+      position: relative;
+      font-size: 20px;
+      margin-top: 15px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
 
-header h1 {
-  font-size: 34px;
-  margin-bottom: 10px;
-}
+    .hero-btn {
+      position: relative;
+      z-index: 2;
+      background: #ff6f00;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-header p {
-  font-size: 16px;
-}
+    .hero-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+    }
 
-/* SECTION */
-section {
-  padding: 40px 20px;
-  max-width: 1100px;
-  margin: auto;
-}
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-/* PRICING */
-.pricing-box {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  margin-bottom: 20px;
-}
+    h2 {
+      color: #0f766e;
+      margin-bottom: 15px;
+    }
 
-.pricing-box h3 {
-  color: #0f766e;
-}
+    /* Gallery */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      touch-action: pan-y;
+    }
 
-.pricing-box p {
-  font-size: 16px;
-}
+    .cards img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      object-fit: cover;
+      height: 200px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
 
-/* INFO */
-.info-strip {
-  background: #ecfeff;
-  border-radius: 16px;
-  padding: 20px;
-}
+    .cards img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
 
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  margin-top: 25px;
-}
+    /* Price Table */
+    .price-table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
 
-.gallery img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-/* CTA */
-.cta {
-  background: linear-gradient(135deg, #0f766e, #14b8a6);
-  color: white;
-  text-align: center;
-  padding: 55px 20px;
-}
+    .price-table th,
+    .price-table td {
+      padding: 12px 15px;
+      text-align: center;
+    }
 
-.cta a {
-  display: inline-block;
-  margin: 10px;
-  padding: 14px 30px;
-  background: #14b8a6;
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: bold;
-}
+    .price-table th {
+      background-color: #14b8a6;
+      color: #fff;
+      font-size: 16px;
+    }
 
-/* RATING */
-.rating-strip {
-  background: #0f766e;
-  padding: 35px 20px;
-  text-align: center;
-  color: white;
-}
+    .price-table tr:nth-child(even) {
+      background-color: #f0fdfa;
+    }
 
-.rating-stars span {
-  font-size: 26px;
-  cursor: pointer;
-  color: #99f6e4;
-}
+    .price-table tr:nth-child(odd) {
+      background-color: #e0f7f5;
+    }
 
-.rating-stars span.active {
-  color: gold;
-}
+    .price-table tr:hover {
+      background-color: #c5f0ed;
+    }
 
-.rating-strip input,
-.rating-strip textarea {
-  width: 90%;
-  max-width: 420px;
-  padding: 8px;
-  margin-top: 8px;
-  border-radius: 6px;
-  border: none;
-}
+    /* Operating Hours Box */
+    .hours {
+      background-color: #ecfeff;
+      padding: 10px 15px;
+      border-left: 5px solid #14b8a6;
+      border-radius: 5px;
+      display: inline-block;
+    }
 
-.rating-strip button {
-  margin-top: 10px;
-  padding: 10px 26px;
-  border-radius: 20px;
-  border: none;
-  background: #14b8a6;
-  color: white;
-  font-weight: bold;
-}
+    /* CTA Section */
+    .cta {
+      background: #0f766e;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
 
-/* MAP */
-.map-section {
-  background: white;
-  padding: 40px 20px;
-}
+    .cta p {
+      color: white;
+      font-size: 18px;
+      margin-bottom: 25px;
+      background: none; /* removed white background */
+      padding: 0;
+      border: none;
+    }
 
-.map-section h2 {
-  text-align: center;
-  color: #0f766e;
-}
+    .cta a {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      background: #14b8a6;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-iframe {
-  width: 100%;
-  height: 350px;
-  border: none;
-  border-radius: 16px;
-}
+    .cta a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #0f766e;
-  color: white;
-  font-size: 14px;
-}
-</style>
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f5f9;
+      font-size: 14px;
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 60px;
+      height: 60px;
+    }
+
+    .whatsapp-button img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Google Maps */
+    .map-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Lightbox Overlay with Swipe */
+    #lightbox {
+      position: fixed;
+      display: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      cursor: pointer;
+      touch-action: pan-y;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 20px 15px;
+      }
+
+      .cards img {
+        height: 150px;
+      }
+
+      .cta a {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Header -->
+  <header>
+    <h1>Rohan Kayaking</h1>
+    <p>Cola Beach Lagoon Kayaking – South Goa</p>
+    <a href="https://api.whatsapp.com/send?phone=918329375100&text=Hi%20I%20want%20to%20book%20kayaking%20at%20Cola%20Beach" target="_blank" class="hero-btn">💬 Book Now</a>
+    <img src="hero.jpg" alt="Cola Beach Lagoon Kayaking" style="display:none;" loading="lazy">
+  </header>
 
-<header>
-  <h1>Rohan Kayaking</h1>
-  <p>Cola Beach Lagoon Kayaking • South Goa</p>
-  <p>⏰ Open Daily: 8:00 AM – 6:30 PM | 🌅 Best Time: Sunset</p>
-</header>
+  <!-- About Section -->
+  <section>
+    <h2>About Our Kayaking Experience</h2>
+    <p>Enjoy single or double kayak rides in the beautiful Cola Beach lagoon. Perfect for beginners and sunset lovers. Our staff will guide you safely and ensure a majestic experience.</p>
+  </section>
 
-<section>
-  <div class="pricing-box">
-    <h3>🚣 Double Kayak</h3>
-    <p>1 Hour – ₹400 per person (₹800 total)</p>
-    <p>30 Minutes – ₹300 per person (₹600 total)</p>
+  <!-- Gallery -->
+  <section>
+    <h2>Photo Gallery</h2>
+    <div class="cards">
+      <div><img src="lagoon.jpg" alt="Cola Beach Lagoon Kayaking view" loading="lazy"></div>
+      <div><img src="kayak1.jpg" alt="Single Kayak ride at Cola Beach" loading="lazy"></div>
+      <div><img src="kayak2.jpg" alt="Double Kayak ride at Cola Beach Lagoon" loading="lazy"></div>
+      <div><img src="sunset.jpg" alt="Sunset Kayaking at Cola Beach Lagoon" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- Pricing & Hours -->
+  <section>
+    <h2>Pricing</h2>
+    <div class="price-table-wrapper">
+      <table class="price-table">
+        <tr>
+          <th>Kayak Type</th>
+          <th>Duration</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Single Kayak</td>
+          <td>1 hour</td>
+          <td>₹600</td>
+        </tr>
+        <tr>
+          <td>Single Kayak</td>
+          <td>30 minutes</td>
+          <td>₹300</td>
+        </tr>
+        <tr>
+          <td>Double Kayak</td>
+          <td>1 hour</td>
+          <td>₹800 (₹400 per person)</td>
+        </tr>
+        <tr>
+          <td>Double Kayak</td>
+          <td>30 minutes</td>
+          <td>₹600 (₹300 per person)</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>Operating Hours</h2>
+    <p class="hours"><strong>Daily:</strong> 8:00 AM – 6:30 PM</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Book Your Kayaking Experience</h2>
+    <p>Call or WhatsApp us to reserve your slot</p>
+    <a href="tel:+918329375100">📞 Call Now</a>
+    <a href="https://api.whatsapp.com/send?phone=918329375100&text=Hi%20I%20want%20to%20book%20kayaking%20at%20Cola%20Beach" target="_blank" rel="noopener">💬 WhatsApp Booking</a>
+  </section>
+
+  <!-- Google Maps -->
+  <section>
+    <h2>Find Us at Cola Beach</h2>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.870786468135!2d74.01902791530155!3d14.998583589699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbe4f0c8896808d%3A0x7ffe55ffd6a4c88b!2sRohan%20Kayaking%2C%20Cola%20beach%20Blue%20lagoon%20cola%2C%20Canacona%2C%20Goa%20403702!5e0!3m2!1sen!2sin!4v1708699794915!5m2!1sen!2sin"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Rohan Kayaking. All rights reserved.
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://api.whatsapp.com/send?phone=918329375100&text=Hi%20I%20want%20to%20book%20kayaking%20at%20Cola%20Beach" target="_blank" class="whatsapp-button">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- Lightbox Overlay with Swipe -->
+  <div id="lightbox">
+    <img id="lightbox-img" src="" alt="Gallery Image">
   </div>
 
-  <div class="pricing-box">
-    <h3>🚣 Single Kayak</h3>
-    <p>1 Hour – ₹600</p>
-    <p>30 Minutes – ₹300</p>
-  </div>
+  <script>
+    // Lightbox & swipe
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const galleryImages = document.querySelectorAll('.cards img');
+    let currentIndex = 0;
 
-  <div class="info-strip">
-    ✔ Age limit: 9+ years<br>
-    ✔ Life jackets when water level is high<br>
-    ✔ Staff guidance before ride<br>
-    ✔ One staff always on lookout
-  </div>
-</section>
+    function openLightbox(index) {
+      currentIndex = index;
+      lightbox.style.display = 'flex';
+      lightboxImg.src = galleryImages[index].src;
+      lightboxImg.alt = galleryImages[index].alt;
+    }
 
-<!-- GALLERY -->
-<section>
-  <h2 style="text-align:center;color:#0f766e;">📸 Kayaking at Cola Beach Lagoon</h2>
-  <div class="gallery">
-    <img src="images/kayak1.jpg" alt="Kayaking at Cola Beach Lagoon">
-    <img src="images/kayak2.jpg" alt="Single Kayak at Cola Beach">
-    <img src="images/kayak3.jpg" alt="Double Kayak at Cola Beach">
-    <img src="images/kayak4.jpg" alt="Sunset Kayaking Cola Beach">
-  </div>
-</section>
+    function closeLightbox() { lightbox.style.display = 'none'; }
 
-<!-- CTA -->
-<section class="cta">
-  <h2>Call or WhatsApp to Reserve Your Slot</h2>
-  <a href="tel:8329375100">📞 Call Now</a>
-  <a href="https://wa.me/8329375100" target="_blank">💬 WhatsApp Booking</a>
-</section>
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
+    });
 
-<!-- RATING (YELLOW AREA FIXED) -->
-<section class="rating-strip">
-  <h3>⭐ Share Your Experience</h3>
-  <div class="rating-stars" id="stars">
-    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-  </div>
-  <input type="text" placeholder="Your name (optional)">
-  <textarea rows="2" placeholder="Your kayaking experience..."></textarea>
-  <br>
-  <button onclick="thankYou()">Submit</button>
-  <p id="msg" style="display:none;">🙏 Thank you for your feedback</p>
-</section>
+    let startX = 0;
+    lightbox.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+    lightbox.addEventListener('touchend', e => {
+      let endX = e.changedTouches[0].clientX;
+      if (endX - startX > 50) currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      else if (startX - endX > 50) currentIndex = (currentIndex + 1) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentIndex].src;
+      lightboxImg.alt = galleryImages[currentIndex].alt;
+    });
 
-<!-- MAP -->
-<section class="map-section">
-  <h2>📍 Find Us at Cola Beach</h2>
-  <iframe src="https://www.google.com/maps?q=Rohan%20kayaking%20cola%20beach&output=embed"></iframe>
-</section>
-
-<footer>
-  © 2025 Rohan Kayaking. All rights reserved.
-</footer>
-
-<script>
-const stars = document.querySelectorAll('#stars span');
-stars.forEach((s, i) => {
-  s.onclick = () => {
-    stars.forEach((x, j) => x.classList.toggle('active', j <= i));
-  }
-});
-function thankYou() {
-  document.getElementById('msg').style.display = 'block';
-}
-</script>
+    lightbox.addEventListener('click', closeLightbox);
+  </script>
 
 </body>
 </html>
